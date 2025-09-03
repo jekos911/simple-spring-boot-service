@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   main:
     web-application-type: servlet
   application:
@@ -17,6 +19,12 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migrations
+
+payments:
+  products-base-url: "http://localhost:${server.port}/api/products"
+  http:
+    connect-timeout-ms: 1500
+    read-timeout-ms: 2500
 
 server:
   port: 8080
