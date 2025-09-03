@@ -34,6 +34,14 @@ public class User {
        )
        private List<Note> notes = new ArrayList<>();
 
+       @OneToMany(
+               mappedBy = "user",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true,
+               fetch = FetchType.LAZY
+       )
+       private List<Product> products = new ArrayList<>();
+
        public void addNote(Note note) {
               notes.add(note);
               note.setAuthor(this);
@@ -43,6 +51,17 @@ public class User {
               notes.remove(note);
               note.setAuthor(null);
        }
+
+       public void addProduct(Product product) {
+              products.add(product);
+              product.setUser(this);
+       }
+
+       public void removeProduct(Product product) {
+              products.remove(product);
+              product.setUser(null);
+       }
+
 
        public Long getId() {
               return id;
