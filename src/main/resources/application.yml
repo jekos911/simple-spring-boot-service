@@ -26,5 +26,8 @@ payments:
     connect-timeout-ms: 1500
     read-timeout-ms: 2500
 
+limits:
+  default-amount: 10000.00
+
 server:
   port: 8080
